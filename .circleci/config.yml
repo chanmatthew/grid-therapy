@@ -19,7 +19,7 @@ jobs:
             - ./node_modules
       - add_ssh_keys:
           fingerprints:
-            - "59:b0:2a:e5:e8:9e:6a:43:ea:9c:40:9d:a7:38:ff:af"
+            - "c1:2c:49:f1:b3:cd:85:00:c5:38:23:e2:3c:9c:c2:1f"
       - run:
           name: deploy
           command: CI=false npm run deploy
