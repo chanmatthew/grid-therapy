@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/grid-therapy/static/css/main.83cc4edf.chunk.css"
   },
   {
-    "revision": "47292938cf1aac42e98e0af7e0accbe3",
+    "revision": "2c7fd2f2fd960f263fce772240e84420",
     "url": "/grid-therapy/index.html"
   }
 ];
