@@ -397,7 +397,7 @@ class Main extends Component {
         >
           {items}
         </Grid>
-        <RestartButton src="/graphics/restart.svg" onClick={this.resetGrid} />
+        <RestartButton src={`${process.env.PUBLIC_URL}/graphics/restart.svg`} onClick={this.resetGrid} />
         <Modal levels={levels} restart={this.resetGrid} opened={isModalShown} />
       </Parent>
     );
