@@ -32,7 +32,7 @@ const ModalBody = styled.div`
   transition: transform 0.8s ease, opacity 0.8s ease;
 `;
 
-const Title = styled.p`
+const Title = styled.div`
   font-size: 3rem;
   letter-spacing: 0.04em;
   font-weight: 800;
@@ -46,7 +46,7 @@ const Title = styled.p`
 `;
 
 const ResultsIcon = styled.div`
-  background-image: ${props => `url(${props.src})` || "none"};
+  background-image: ${props => `url(${props.src})`};
   background-position: left bottom;
   background-repeat: no-repeat;
   background-size: contain;
@@ -106,7 +106,7 @@ const RestartButton = styled.button`
 `;
 
 const RestartGraphic = styled.div`
-  background-image: ${props => `url(${props.src})` || "none"};
+  background-image: ${props => `url(${props.src})`};
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;

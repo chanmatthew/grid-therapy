@@ -149,7 +149,7 @@ const Target = styled.div`
 `;
 
 const RestartButton = styled.div`
-  background-image: ${props => `url(${props.src})` || "none"};
+  background-image: ${props => `url(${props.src})`};
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
