@@ -203,7 +203,7 @@ class Modal extends Component {
       <ModalBackdrop opened={opened}>
         <ModalBody opened={opened}>
           <Title>
-            <ResultsIcon src="/graphics/results.svg" />
+            <ResultsIcon src={`${process.env.PUBLIC_URL}/graphics/results.svg`} />
             Results
           </Title>
           <Results>
@@ -225,7 +225,7 @@ class Modal extends Component {
             ))}
           </Results>
           <RestartButton type="button" onClick={restart}>
-            <RestartGraphic src="/graphics/restart.svg" />
+            <RestartGraphic src={`${process.env.PUBLIC_URL}/graphics/restart.svg`} />
             Start Again
           </RestartButton>
         </ModalBody>
