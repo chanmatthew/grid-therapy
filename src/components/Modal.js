@@ -45,9 +45,14 @@ const Title = styled.p`
   align-items: flex-end;
 `;
 
-const ResultsIcon = styled.img`
+const ResultsIcon = styled.div`
+  background-image: ${props => `url(${props.src})` || "none"};
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
   height: 1.5em;
-  margin-right: 0.2em;
+  width: 1.5em;
+  margin-right: 0.1em;
 `;
 
 const Results = styled.div`
@@ -100,9 +105,15 @@ const RestartButton = styled.button`
   }
 `;
 
-const RestartGraphic = styled.img`
-  margin-right: 0.5em;
+const RestartGraphic = styled.div`
+  background-image: ${props => `url(${props.src})` || "none"};
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
   height: 1.2em;
+  width: 1.2em;
+  margin-right: 0.3em;
+  margin-top: -0.2em;
 `;
 
 const AttemptsContainer = styled.div`
@@ -192,7 +203,7 @@ class Modal extends Component {
       <ModalBackdrop opened={opened}>
         <ModalBody opened={opened}>
           <Title>
-            <ResultsIcon src="/graphics/results.svg" alt="Results Icon" />
+            <ResultsIcon src="/graphics/results.svg" />
             Results
           </Title>
           <Results>
@@ -214,7 +225,7 @@ class Modal extends Component {
             ))}
           </Results>
           <RestartButton type="button" onClick={restart}>
-            <RestartGraphic src="/graphics/restart.svg" alt="Restart" />
+            <RestartGraphic src="/graphics/restart.svg" />
             Start Again
           </RestartButton>
         </ModalBody>

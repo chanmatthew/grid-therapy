@@ -148,13 +148,15 @@ const Target = styled.div`
   margin: auto;
 `;
 
-const RestartButton = styled.button`
-  background-color: transparent;
-  outline: none;
-  border: none;
+const RestartButton = styled.div`
+  background-image: ${props => `url(${props.src})` || "none"};
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 3em;
+  width: 3em;
   cursor: pointer;
   user-select: none;
-  text-decoration: none;
   opacity: 0.8;
   transition: all 0.2s ease;
   position: absolute;
@@ -395,9 +397,7 @@ class Main extends Component {
         >
           {items}
         </Grid>
-        <RestartButton type="button" onClick={this.resetGrid}>
-          <img src="/graphics/restart.svg" alt="Restart" />
-        </RestartButton>
+        <RestartButton src="/graphics/restart.svg" onClick={this.resetGrid} />
         <Modal levels={levels} restart={this.resetGrid} opened={isModalShown} />
       </Parent>
     );
