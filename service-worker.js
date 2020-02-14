@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/grid-therapy/precache-manifest.21a396ca3f43aacfe16e68e5d9f85504.js"
+  "/grid-therapy/precache-manifest.a7000ccbabfd32cdf1768eeef66eba9d.js"
 );
 
 workbox.clientsClaim();
