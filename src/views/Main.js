@@ -4,68 +4,175 @@ import { Helmet } from "react-helmet";
 
 import GridItem from "../components/GridItem";
 import Modal from "../components/Modal";
+import RestartButton from "../components/RestartButton";
+import { MIN_WIDTH_BREAKPOINTS } from "../enums";
+
+const [
+  ,
+  ,
+  POST_IPHONE6_PORTRAIT_UP,
+  POST_IPHONE6_PLUS_PORTRAIT_UP,
+  PHONE_LANDSCAPE_UP,
+  SMALL_DEVICES_LANDSCAPE_UP,
+  BETWEEN_SMALL_DEVICES_TABLET_UP,
+  TABLET_PORTRAIT_UP,
+  TABLET_LANDSCAPE_UP,
+  DESKTOP_UP
+] = MIN_WIDTH_BREAKPOINTS;
 
 const description =
   "An application that accesses a person's ability to recognize a moving target.";
 
 const Parent = styled.div`
   position: relative;
+  user-select: none;
 `;
 
 const InfoContainer = styled.div`
+  position: relative;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
-  margin: 0 auto;
-  height: 28vh;
+  height: 26vh;
+  min-height: 8em;
   background-color: rgba(200, 189, 171, 1);
+
+  @media only screen and (min-width: ${POST_IPHONE6_PORTRAIT_UP}px) {
+    min-height: 10em;
+  }
 `;
 
 const LevelContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 `;
 
 const LevelTitle = styled.span`
-  font-size: 2.5rem;
+  font-size: 0.875rem;
   letter-spacing: 0.04em;
   font-weight: 800;
   text-transform: uppercase;
   color: rgba(0, 0, 0, 0.2);
+
+  @media only screen and (min-width: ${POST_IPHONE6_PORTRAIT_UP}px) {
+    font-size: 1rem;
+  }
+
+  @media only screen and (min-width: ${POST_IPHONE6_PLUS_PORTRAIT_UP}px) {
+    font-size: 1.25rem;
+  }
+
+  @media only screen and (min-width: ${TABLET_PORTRAIT_UP}px) {
+    font-size: 1.5rem;
+  }
+
+  @media only screen and (min-width: ${DESKTOP_UP}px) {
+    font-size: 1.75rem;
+  }
 `;
 
-const Level = styled.span`
-  font-size: 7rem;
+const Level = styled.div`
+  font-size: 0.4rem;
+  height: 6.25em;
+  width: 5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+
+  @media only screen and (min-width: ${POST_IPHONE6_PORTRAIT_UP}px) {
+    font-size: 0.45rem;
+  }
+
+  @media only screen and (min-width: ${POST_IPHONE6_PLUS_PORTRAIT_UP}px) {
+    font-size: 0.5rem;
+  }
+
+  @media only screen and (min-width: ${SMALL_DEVICES_LANDSCAPE_UP}px) {
+    font-size: 0.6rem;
+  }
+
+  @media only screen and (min-width: ${TABLET_PORTRAIT_UP}px) {
+    font-size: 0.7rem;
+  }
+
+  @media only screen and (min-width: ${DESKTOP_UP}px) {
+    font-size: 0.8rem;
+    margin-top: 20px;
+  }
+`;
+
+const LevelSpan = styled.span`
+  font-size: 2rem;
   letter-spacing: 0.0175em;
   font-weight: 800;
   color: rgba(250, 238, 216, 1);
-`;
 
-const StagesTitle = styled.span`
-  font-size: 2.5rem;
-  letter-spacing: 0.04em;
-  font-weight: 800;
-  text-transform: uppercase;
-`;
+  @media only screen and (min-width: ${POST_IPHONE6_PORTRAIT_UP}px) {
+    font-size: 2.5rem;
+  }
 
-const AttemptsContainer = styled.div`
-  display: flex;
-  margin-top: 20px;
+  @media only screen and (min-width: ${POST_IPHONE6_PLUS_PORTRAIT_UP}px) {
+    font-size: 3.5rem;
+  }
+
+  @media only screen and (min-width: ${TABLET_PORTRAIT_UP}px) {
+    font-size: 4rem;
+  }
+
+  @media only screen and (min-width: ${DESKTOP_UP}px) {
+    font-size: 4.5rem;
+  }
 `;
 
 const StageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+`;
+
+const StagesTitle = styled.span`
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  font-weight: 800;
+  text-transform: uppercase;
   color: rgba(0, 0, 0, 0.2);
+
+  @media only screen and (min-width: ${POST_IPHONE6_PORTRAIT_UP}px) {
+    font-size: 1rem;
+  }
+
+  @media only screen and (min-width: ${POST_IPHONE6_PLUS_PORTRAIT_UP}px) {
+    font-size: 1.25rem;
+  }
+
+  @media only screen and (min-width: ${TABLET_PORTRAIT_UP}px) {
+    font-size: 1.5rem;
+  }
+
+  @media only screen and (min-width: ${DESKTOP_UP}px) {
+    font-size: 1.75rem;
+  }
+`;
+
+const AttemptsContainer = styled.div`
+  display: flex;
+  margin-top: 15px;
+
+  @media only screen and (min-width: ${DESKTOP_UP}px) {
+    margin-top: 20px;
+  }
 `;
 
 const Stage = styled.div`
+  font-size: 0.4rem;
   background-color: rgba(0, 0, 0, 0.1);
   height: 6.25em;
   width: 5em;
-  border-radius: 5px;
+  border-radius: 0.3125em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,12 +180,37 @@ const Stage = styled.div`
   &:not(:last-child) {
     margin-right: 1.25em;
   }
+
+  @media only screen and (min-width: ${POST_IPHONE6_PORTRAIT_UP}px) {
+    font-size: 0.45rem;
+  }
+
+  @media only screen and (min-width: ${POST_IPHONE6_PLUS_PORTRAIT_UP}px) {
+    font-size: 0.5rem;
+  }
+
+  @media only screen and (min-width: ${PHONE_LANDSCAPE_UP}px) {
+    font-size: 0.5rem;
+  }
+
+  @media only screen and (min-width: ${SMALL_DEVICES_LANDSCAPE_UP}px) {
+    font-size: 0.6rem;
+  }
+
+  @media only screen and (min-width: ${TABLET_PORTRAIT_UP}px) {
+    font-size: 0.7rem;
+  }
+
+  @media only screen and (min-width: ${DESKTOP_UP}px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const Attempt = styled.div`
+  font-size: 0.4rem;
   position: relative;
-  width: 15px;
-  height: 67.5px;
+  width: 0.9375em;
+  height: 4.21875em;
   background-color: #ff6f6f;
   transform: rotate3d(0, 0, 1, 45deg);
   border-radius: 0.125em;
@@ -87,19 +219,36 @@ const Attempt = styled.div`
   &::after {
     content: "";
     position: absolute;
-    width: 15px;
-    height: 67.5px;
+    width: 0.9375em;
+    height: 4.21875em;
     background-color: #ff6f6f;
     transform: rotate3d(0, 0, 1, 90deg);
     border-radius: 0.125em;
     transition: all 0.2s ease;
   }
+
+  @media only screen and (min-width: ${POST_IPHONE6_PORTRAIT_UP}px) {
+    font-size: 0.45rem;
+  }
+
+  @media only screen and (min-width: ${POST_IPHONE6_PLUS_PORTRAIT_UP}px) {
+    font-size: 0.5rem;
+  }
+
+  @media only screen and (min-width: ${SMALL_DEVICES_LANDSCAPE_UP}px) {
+    font-size: 0.6rem;
+  }
+
+  @media only screen and (min-width: ${TABLET_PORTRAIT_UP}px) {
+    font-size: 0.7rem;
+  }
 `;
 
 const Checkmark = styled.div`
+  font-size: 0.4rem;
   position: relative;
-  width: 15px;
-  height: 60px;
+  width: 0.9375em;
+  height: 3.75em;
   background-color: #96d796;
   transform: rotate3d(0, 0, 1, 35deg);
   border-radius: 0.125em;
@@ -109,36 +258,89 @@ const Checkmark = styled.div`
   &::after {
     content: "";
     position: absolute;
-    width: 30px;
-    height: 15px;
+    width: 1.875em;
+    height: 0.9375em;
     background-color: #96d796;
     border-radius: 0.125em;
     transition: all 0.2s ease;
     bottom: 0;
     right: 0;
   }
+
+  @media only screen and (min-width: ${POST_IPHONE6_PORTRAIT_UP}px) {
+    font-size: 0.45rem;
+  }
+
+  @media only screen and (min-width: ${POST_IPHONE6_PLUS_PORTRAIT_UP}px) {
+    font-size: 0.5rem;
+  }
+
+  @media only screen and (min-width: ${SMALL_DEVICES_LANDSCAPE_UP}px) {
+    font-size: 0.6rem;
+  }
+
+  @media only screen and (min-width: ${TABLET_PORTRAIT_UP}px) {
+    font-size: 0.7rem;
+  }
 `;
 
 const Grid = styled.div`
+  font-size: 0.35rem;
   display: grid;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 72vh;
+  min-height: 45em;
+  height: calc(${props => props.viewportHeight}px - 26vh);
   justify-content: center;
   align-content: center;
-  grid-template: repeat(${props => props.rows}, 90px) / repeat(
+  grid-template: repeat(${props => props.rows}, 5.625em) / repeat(
       ${props => props.columns},
-      90px
+      5.625em
     );
   user-select: none;
+
+  @media only screen and (min-width: ${POST_IPHONE6_PORTRAIT_UP}px) {
+    font-size: 0.4rem;
+  }
+
+  @media only screen and (min-width: ${POST_IPHONE6_PLUS_PORTRAIT_UP}px) {
+    font-size: 0.45rem;
+  }
+
+  @media only screen and (min-width: ${PHONE_LANDSCAPE_UP}px) {
+    font-size: 0.5rem;
+  }
+
+  @media only screen and (min-width: ${SMALL_DEVICES_LANDSCAPE_UP}px) {
+    font-size: 0.55rem;
+  }
+
+  @media only screen and (min-width: ${BETWEEN_SMALL_DEVICES_TABLET_UP}px) {
+    font-size: 0.6rem;
+  }
+
+  @media only screen and (min-width: ${TABLET_PORTRAIT_UP}px) {
+    font-size: 0.65rem;
+    height: calc(${props => props.viewportHeight}px - 28vh);
+  }
+
+  @media only screen and (min-width: ${TABLET_LANDSCAPE_UP}px) {
+    font-size: 0.7rem;
+    height: calc(${props => props.viewportHeight}px - 26vh);
+  }
+
+  @media only screen and (min-width: ${DESKTOP_UP}px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const Target = styled.div`
+  font-size: 0.4rem;
   position: absolute;
-  height: 50px;
-  width: 50px;
+  height: 3.125em;
+  width: 3.125em;
   background-color: rgba(200, 189, 171, 1);
   border-radius: 50%;
   top: 0;
@@ -146,25 +348,33 @@ const Target = styled.div`
   left: 0;
   right: 0;
   margin: auto;
-`;
 
-const RestartButton = styled.div`
-  background-image: ${props => `url(${props.src})`};
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 3em;
-  width: 3em;
-  cursor: pointer;
-  user-select: none;
-  opacity: 0.8;
-  transition: all 0.2s ease;
-  position: absolute;
-  right: 2em;
-  bottom: 1.8em;
+  @media only screen and (min-width: ${POST_IPHONE6_PORTRAIT_UP}px) {
+    font-size: 0.45rem;
+  }
 
-  &:hover {
-    opacity: 1;
+  @media only screen and (min-width: ${POST_IPHONE6_PLUS_PORTRAIT_UP}px) {
+    font-size: 0.55rem;
+  }
+
+  @media only screen and (min-width: ${SMALL_DEVICES_LANDSCAPE_UP}px) {
+    font-size: 0.6rem;
+  }
+
+  @media only screen and (min-width: ${BETWEEN_SMALL_DEVICES_TABLET_UP}px) {
+    font-size: 0.65rem;
+  }
+
+  @media only screen and (min-width: ${TABLET_PORTRAIT_UP}px) {
+    font-size: 0.7rem;
+  }
+
+  @media only screen and (min-width: ${TABLET_LANDSCAPE_UP}px) {
+    font-size: 0.75rem;
+  }
+
+  @media only screen and (min-width: ${DESKTOP_UP}px) {
+    font-size: 0.95rem;
   }
 `;
 
@@ -174,6 +384,7 @@ function getRandomInt(max) {
 
 class Main extends Component {
   state = {
+    viewportHeight: 0,
     currentLevel: 0,
     levels: {
       0: {
@@ -230,8 +441,21 @@ class Main extends Component {
   };
 
   componentDidMount() {
-    this.setState({ target: getRandomInt(this.getTotalItems(0)) });
+    this.setState({
+      viewportHeight: window.innerHeight,
+      target: getRandomInt(this.getTotalItems(0))
+    });
+
+    window.addEventListener("resize", this.setViewportHeight);
   }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.setViewportHeight);
+  }
+
+  setViewportHeight = () => {
+    this.setState({ viewportHeight: window.innerHeight });
+  };
 
   getTotalItems = level => {
     const { levels } = this.state;
@@ -337,7 +561,13 @@ class Main extends Component {
   };
 
   render() {
-    const { currentLevel, levels, target, isModalShown } = this.state;
+    const {
+      viewportHeight,
+      currentLevel,
+      levels,
+      target,
+      isModalShown
+    } = this.state;
 
     let items = [];
 
@@ -374,7 +604,9 @@ class Main extends Component {
         <InfoContainer>
           <LevelContainer>
             <LevelTitle>Level</LevelTitle>
-            <Level>{currentLevel + 1}</Level>
+            <Level>
+              <LevelSpan>{currentLevel + 1}</LevelSpan>
+            </Level>
           </LevelContainer>
           <StageContainer>
             <StagesTitle>Stages</StagesTitle>
@@ -390,14 +622,15 @@ class Main extends Component {
               ))}
             </AttemptsContainer>
           </StageContainer>
+          <RestartButton handler={this.resetGrid} />
         </InfoContainer>
         <Grid
           rows={levels[currentLevel].rows}
           columns={levels[currentLevel].columns}
+          viewportHeight={viewportHeight}
         >
           {items}
         </Grid>
-        <RestartButton src={`${process.env.PUBLIC_URL}/graphics/restart.svg`} onClick={this.resetGrid} />
         <Modal levels={levels} restart={this.resetGrid} opened={isModalShown} />
       </Parent>
     );
